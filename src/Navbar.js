@@ -6,7 +6,7 @@ function Navbar() {
   const [collapse, setCollapse] = useState("");
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-pokedex">
       <Link to="/" className="navbar-brand">
         {Accents.Pokedex}
       </Link>
@@ -39,10 +39,7 @@ function Navbar() {
             placeholder="Search"
             aria-label="Search"
           />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
+          <button className="btn btn-success my-2 my-sm-0" type="submit">
             Search
           </button>
         </form>
