@@ -27,6 +27,7 @@
     "prettier": "^2.0.4"
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
