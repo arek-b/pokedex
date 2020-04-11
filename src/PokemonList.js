@@ -8,7 +8,7 @@ export default function PokemonList({ pokemonList }) {
     <div />
   ) : (
     pokemonList.map((pokemon) => (
-      <PokemonListItem key={pokemon.id} id={pokemon.id} name={pokemon.name} />
+      <PokemonListItem key={pokemon.name} name={pokemon.name} />
     ))
   );
 }
