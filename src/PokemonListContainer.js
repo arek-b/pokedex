@@ -7,10 +7,6 @@ export default function PokemonListContainer() {
 
   useEffect(() => {
     // get pokemon list from api
-    // PokeAPI.get("https://pokeapi.co/api/v2/pokemon/").then(({ results }) => {
-    //   console.log(results);
-    //   setPokemonList(results);
-    // }, console.error);
     PokeAPI.get("https://pokeapi.co/api/v2/pokemon/").then((apiResult) => {
       setPokemonList(apiResult.results);
     });
