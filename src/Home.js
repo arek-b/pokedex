@@ -1,5 +1,6 @@
 import React from "react";
 import * as Accents from "./Accents";
+import PokemonListContainer from "./PokemonListContainer";
 
 class Home extends React.Component {
   constructor(props) {
@@ -7,7 +8,12 @@ class Home extends React.Component {
   }
 
   render() {
-    return <h1>Welcome to {Accents.Pokedex}!</h1>;
+    return (
+      <div>
+        <h1>Welcome to {Accents.Pokedex}!</h1>
+        <PokemonListContainer />
+      </div>
+    );
   }
 }
 
