@@ -1,5 +1,19 @@
-.bg-pokedex {
+.navbar-pokedex {
+  background-color: #ffcc00;
+  font-weight: bold;
+}
+
+.brand-pokedex {
+  color: #17285e;
+  font-weight: bold;
+}
+
+.btn-danger {
   background-color: #dc0a2d;
+}
+
+.btn-danger:hover {
+  background-color: #c70021;
 }
 
 html,

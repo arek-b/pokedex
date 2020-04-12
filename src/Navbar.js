@@ -6,9 +6,9 @@ function Navbar() {
   const [collapse, setCollapse] = useState("");
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-pokedex">
+    <nav className="navbar navbar-expand-lg navbar-light navbar-pokedex">
       <Link to="/" className="navbar-brand">
-        {Accents.Pokedex}
+        <span className="brand-pokedex">{Accents.Pokedex}</span>
       </Link>
       <button
         className="navbar-toggler"
@@ -26,9 +26,14 @@ function Navbar() {
         id="navbarSupportedContent"
       >
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link to="/" className="nav-link">
-              Home <span className="sr-only">(current)</span>
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/results" className="nav-link">
+              All {Accents.Pokemon}
             </Link>
           </li>
         </ul>
@@ -39,7 +44,7 @@ function Navbar() {
             placeholder="Search"
             aria-label="Search"
           />
-          <button className="btn btn-success my-2 my-sm-0" type="submit">
+          <button className="btn btn-danger my-2 my-sm-0" type="submit">
             Search
           </button>
         </form>

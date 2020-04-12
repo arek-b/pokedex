@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Router } from "@reach/router";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import ResultsContainer from "./ResultsContainer";
