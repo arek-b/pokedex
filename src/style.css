@@ -14,6 +14,7 @@ html,
   line-height: normal;
   text-align: center;
   padding: 0 8px;
+  color: gray;
 }
 
 .pagination-arrow.visibility-hidden {
