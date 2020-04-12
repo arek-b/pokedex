@@ -1,29 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import PokemonList from "./PokemonList";
-import PokeAPI from "./PokeAPI";
 import Pagination from "./Pagination";
 import PokemonListLoading from "./PokemonListLoading";
 
-export default function Results({ resultsPerPage }) {
-  const [pokemonList, setPokemonList] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setPokemonList([]);
-    setIsLoading(true);
-    PokeAPI.getPaginated(
-      "https://pokeapi.co/api/v2/pokemon/",
-      page,
-      resultsPerPage
-    ).then((apiResult) => {
-      setPokemonList(apiResult.results);
-      setPageCount(Math.ceil(apiResult.count / resultsPerPage));
-      setIsLoading(false);
-    });
-  }, [page, resultsPerPage]);
+export default function Results({
+  page,
+  pageCount,
+  setPage,
+  isLoading,
+  resultsPerPage,
+  pokemonList,
+}) {
   return (
     <div>
       <div className="row">
@@ -62,9 +50,10 @@ export default function Results({ resultsPerPage }) {
 }
 
 Results.propTypes = {
+  page: PropTypes.number.isRequired,
+  pageCount: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   resultsPerPage: PropTypes.number.isRequired,
-};
-
-Results.defaultProps = {
-  resultsPerPage: 20,
+  pokemonList: PropTypes.array.isRequired,
 };
