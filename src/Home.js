@@ -1,5 +1,4 @@
 import React from "react";
-import * as Accents from "./Accents";
 import PokemonListContainer from "./PokemonListContainer";
 
 class Home extends React.Component {
@@ -10,8 +9,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to {Accents.Pokedex}!</h1>
-        <PokemonListContainer />
+        <PokemonListContainer resultsPerPage={10} />
       </div>
     );
   }

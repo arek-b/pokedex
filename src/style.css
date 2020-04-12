@@ -25,3 +25,52 @@ html,
   display: flex;
   align-items: center;
 }
+
+.sprite-container {
+  width: 96px;
+  height: 96px;
+  outline: 2px solid #eee;
+  margin-bottom: 8px;
+  animation: fadeOutSpriteContainer ease-in-out 0.5s;
+}
+
+@keyframes fadeOutSpriteContainer {
+  from {
+    background-color: #eee;
+  }
+  to {
+    background-color: #fff;
+  }
+}
+
+.sprite {
+  opacity: 0;
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated; /* prevents blur on high-dpi screens */
+}
+
+.sprite-loaded {
+  animation: fadeIn ease-in-out 0.5s;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h4.fake {
+  width: 33%;
+  background-color: #eee;
+  animation: fadeIn ease-in-out 1s;
+}
+
+.sprite-container.fake {
+  background-color: #eee;
+  animation: fadeIn ease-in-out 1s;
+}

@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PokemonListItem from "./PokemonListItem";
+import PokemonListItemContainer from "./PokemonListItemContainer";
 
 export default function PokemonList({ pokemonList }) {
-  console.log(pokemonList);
   return pokemonList.length === 0 ? (
     <div />
   ) : (
-    pokemonList.map((pokemon) => (
-      <PokemonListItem key={pokemon.name} name={pokemon.name} />
-    ))
+    <div className="list-group">
+      {pokemonList.map(({ name, url }) => (
+        <PokemonListItemContainer key={name} name={name} url={url} />
+      ))}
+    </div>
   );
 }
 
