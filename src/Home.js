@@ -1,5 +1,5 @@
 import React from "react";
-import PokemonListContainer from "./PokemonListContainer";
+import * as Accents from "./Accents";
 
 class Home extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <PokemonListContainer resultsPerPage={10} />
+        <h1>{Accents.Pokedex}</h1>
       </div>
     );
   }

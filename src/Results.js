@@ -5,7 +5,7 @@ import PokeAPI from "./PokeAPI";
 import Pagination from "./Pagination";
 import PokemonListLoading from "./PokemonListLoading";
 
-export default function PokemonListContainer({ resultsPerPage }) {
+export default function Results({ resultsPerPage }) {
   const [pokemonList, setPokemonList] = useState([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
@@ -61,10 +61,10 @@ export default function PokemonListContainer({ resultsPerPage }) {
   );
 }
 
-PokemonListContainer.propTypes = {
+Results.propTypes = {
   resultsPerPage: PropTypes.number.isRequired,
 };
 
-PokemonListContainer.defaultProps = {
+Results.defaultProps = {
   resultsPerPage: 20,
 };
