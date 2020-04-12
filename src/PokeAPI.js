@@ -1,4 +1,4 @@
-import "regenerator-runtime/runtime";
+import "regenerator-runtime/runtime"; // fix for parcel's bug
 import PropTypes from "prop-types";
 
 export default class PokeAPI {
