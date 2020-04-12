@@ -17,5 +17,5 @@ export default function PokemonListItem({ name }) {
 }
 
 PokemonListItem.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
 };

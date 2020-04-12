@@ -14,5 +14,5 @@ export default function PokemonList({ pokemonList }) {
 }
 
 PokemonList.propTypes = {
-  pokemonList: PropTypes.array,
+  pokemonList: PropTypes.array.isRequired,
 };

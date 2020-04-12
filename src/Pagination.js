@@ -34,7 +34,7 @@ export default function Pagination({ currentPage, pageCount, setPage }) {
 }
 
 Pagination.propTypes = {
-  currentPage: PropTypes.number,
-  pageCount: PropTypes.number,
-  setPage: PropTypes.func,
+  currentPage: PropTypes.number.isRequired,
+  pageCount: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
 };
