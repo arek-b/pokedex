@@ -6,3 +6,21 @@ html,
 #root {
   background-color: #fffbcd;
 }
+
+.my-pagination > .pagination-arrow {
+  font-size: 30px;
+  background: none;
+  border: none;
+  line-height: normal;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.pagination-arrow.visibility-hidden {
+  visibility: hidden;
+}
+
+.my-pagination {
+  display: flex;
+  align-items: center;
+}
