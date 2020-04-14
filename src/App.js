@@ -6,6 +6,7 @@ import "./style.css";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import ResultsContainer from "./ResultsContainer";
+import APIConnectionFailed from "./APIConnectionFailed";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Router>
           <Home path="/" />
           <ResultsContainer path="/results/" resultsPerPage={10} />
+          <APIConnectionFailed path="/api-connection-failed/" />
         </Router>
       </div>
     </React.StrictMode>
