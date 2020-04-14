@@ -14,9 +14,8 @@ export default class PokeAPI {
       let json = await response.json();
       return json;
     } catch (e) {
-      console.error(e);
+      return false;
     }
-    return {};
   }
 
   static async getPaginated(url, page, resultsPerPage) {
