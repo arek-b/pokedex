@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 import PokeAPI from "./PokeAPI";
 import Results from "./Results";
 import { navigate } from "@reach/router";
+import { useQueryParam, NumberParam } from "use-query-params";
 
 export default function ResultsContainer({ resultsPerPage }) {
   const [pokemonList, setPokemonList] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useQueryParam("page", NumberParam);
   const [pageCount, setPageCount] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
+  if (typeof page === "undefined") {
+    setPage(1);
+  }
 
   useEffect(() => {
     setPokemonList([]);
