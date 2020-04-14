@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import PokeAPI from "./PokeAPI";
 import TypesFilter from "./TypesFilter";
 import { navigate } from "@reach/router";
-import { useQueryParam, ArrayParam } from "use-query-params";
+import PropTypes from "prop-types";
 
-export default function TypesFilterContainer() {
+export default function TypesFilterContainer({ filter }) {
   const [availableTypes, setAvailableTypes] = useState([]);
-  const [selectedTypes, setSelectedTypes] = useQueryParam(
-    "pokemonType",
-    ArrayParam
-  );
+  const [selectedTypes, setSelectedTypes] = filter;
 
   useEffect(() => {
     /**
@@ -36,3 +33,7 @@ export default function TypesFilterContainer() {
     />
   );
 }
+
+TypesFilterContainer.propTypes = {
+  filter: PropTypes.array.isRequired,
+};

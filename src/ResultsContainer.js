@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import PokeAPI from "./PokeAPI";
 import Results from "./Results";
 import { navigate } from "@reach/router";
-import { useQueryParam, NumberParam } from "use-query-params";
+import { useQueryParam, NumberParam, ArrayParam } from "use-query-params";
 
 export default function ResultsContainer({ resultsPerPage }) {
   const [pokemonList, setPokemonList] = useState([]);
@@ -11,16 +11,17 @@ export default function ResultsContainer({ resultsPerPage }) {
   const [pageCount, setPageCount] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
-  if (typeof page === "undefined") {
-    setPage(1);
-  }
+  const [selectedTypes, setSelectedTypes] = useQueryParam(
+    "pokemonType",
+    ArrayParam
+  );
 
   useEffect(() => {
     setPokemonList([]);
     setIsLoading(true);
     PokeAPI.getPaginated(
       "https://pokeapi.co/api/v2/pokemon/",
-      page,
+      page || 1,
       resultsPerPage
     ).then((apiResult) => {
       if (apiResult) {
@@ -33,13 +34,14 @@ export default function ResultsContainer({ resultsPerPage }) {
   }, [page, resultsPerPage]);
   return (
     <Results
-      page={page}
+      page={page || 1}
       pageCount={pageCount}
       setPage={setPage}
       isLoading={isLoading}
       resultsPerPage={resultsPerPage}
       pokemonList={pokemonList}
       totalCount={totalCount}
+      filters={{ types: [selectedTypes, setSelectedTypes] }}
     />
   );
 }

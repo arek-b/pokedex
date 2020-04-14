@@ -14,12 +14,13 @@ export default function Results({
   resultsPerPage,
   pokemonList,
   totalCount,
+  filters,
 }) {
   return (
     <div>
       <div className="row">
         <div className="d-none d-sm-block col-sm-3">
-          <Filters />
+          <Filters filters={filters} />
         </div>
         <div className="col-12 col-sm-9">
           <div className="row">
@@ -69,4 +70,5 @@ Results.propTypes = {
   resultsPerPage: PropTypes.number.isRequired,
   pokemonList: PropTypes.array.isRequired,
   totalCount: PropTypes.number.isRequired,
+  filters: PropTypes.object.isRequired,
 };
