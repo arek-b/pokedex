@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import PokeAPI from "./PokeAPI";
 import Results from "./Results";
+import { navigate } from "@reach/router";
 
 export default function ResultsContainer({ resultsPerPage }) {
   const [pokemonList, setPokemonList] = useState([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     setPokemonList([]);
@@ -17,9 +19,12 @@ export default function ResultsContainer({ resultsPerPage }) {
       page,
       resultsPerPage
     ).then((apiResult) => {
-      setPokemonList(apiResult.results);
-      setPageCount(Math.ceil(apiResult.count / resultsPerPage));
-      setIsLoading(false);
+      if (apiResult) {
+        setPokemonList(apiResult.results);
+        setPageCount(Math.ceil(apiResult.count / resultsPerPage));
+        setTotalCount(apiResult.count);
+        setIsLoading(false);
+      } else navigate("/api-connection-failed/");
     });
   }, [page, resultsPerPage]);
   return (
@@ -30,6 +35,7 @@ export default function ResultsContainer({ resultsPerPage }) {
       isLoading={isLoading}
       resultsPerPage={resultsPerPage}
       pokemonList={pokemonList}
+      totalCount={totalCount}
     />
   );
 }
