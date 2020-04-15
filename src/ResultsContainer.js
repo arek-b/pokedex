@@ -42,6 +42,16 @@ export default function ResultsContainer({ resultsPerPage }) {
           let pokemon = apiResult.pokemon.map(({ pokemon }) => pokemon);
           newPokemonList = [...newPokemonList, ...pokemon];
         });
+
+        // removes duplicates
+        let seen = {};
+        newPokemonList = newPokemonList.filter(function (item) {
+          let key = item.name;
+          return Object.prototype.hasOwnProperty.call(seen, key)
+            ? false
+            : (seen[key] = true);
+        });
+
         newTotalCount = newPokemonList.length;
         newPokemonList = newPokemonList.sort((a, b) => a.name > b.name);
         newPokemonList = newPokemonList.slice(
