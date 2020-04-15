@@ -16,21 +16,38 @@ export default function PokemonListItem({
   return (
     <Link
       to={`/pokemon/${name}`}
-      className="text-capitalize list-group-item list-group-item-action"
+      className="list-group-item list-group-item-action"
     >
       <div>
-        <h4>{name}</h4>
-        <div className="sprite-container">
-          {info.sprites ? (
-            <img
-              src={src}
-              alt={"Pokemon sprite"}
-              className={`sprite ${spriteLoaded ? "sprite-loaded" : ""}`}
-              onLoad={() => setSpriteLoaded(true)}
-            ></img>
-          ) : (
-            ""
-          )}
+        <h4 className="text-capitalize">{name}</h4>
+        <div className="pokemon-info-container">
+          <div className="sprite-container">
+            {info.sprites ? (
+              <img
+                src={src}
+                alt={"Pokemon sprite"}
+                className={`sprite ${spriteLoaded ? "sprite-loaded" : ""}`}
+                onLoad={() => setSpriteLoaded(true)}
+              ></img>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="pokemon-info">
+            {Object.keys(info).length === 0 ? null : (
+              <p>
+                EXP gain: {info.base_experience}
+                <br />
+                Height: {info.height /*dm*/ * 10} cm
+                <br />
+                Weight: {info.weight /*hg*/ / 10} kg
+                <br />
+                <span className="text-capitalize">
+                  Species: {info.species.name}
+                </span>
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </Link>

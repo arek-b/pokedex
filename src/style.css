@@ -48,12 +48,31 @@ html,
   align-items: center;
 }
 
+.pokemon-info-container {
+  display: flex;
+}
+
+.pokemon-info {
+  flex: 1;
+  padding-left: 10px;
+  font-size: small;
+  color: #333;
+}
+
+.pokemon-info > p {
+  animation: fadeIn ease-in-out 0.3s;
+}
+
 .sprite-container {
   width: 96px;
   height: 96px;
   outline: 2px solid #eee;
   margin-bottom: 8px;
   animation: fadeOutSpriteContainer ease-in-out 0.5s;
+}
+.sprite-container > img {
+  width: 96px;
+  height: 96px;
 }
 
 @keyframes fadeOutSpriteContainer {
