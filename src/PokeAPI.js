@@ -30,4 +30,16 @@ export default class PokeAPI {
     url += `?limit=${resultsPerPage}&offset=${(page - 1) * resultsPerPage}`;
     return await PokeAPI.get(url);
   }
+
+  static async getAll(urls) {
+    PropTypes.checkPropTypes({ urls: PropTypes.array.isRequired }, { urls });
+    const apiResults = [];
+    for (const key in urls) {
+      if (Object.prototype.hasOwnProperty.call(urls, key)) {
+        const url = urls[key];
+        apiResults.push(await PokeAPI.get(url));
+      }
+    }
+    return apiResults;
+  }
 }
