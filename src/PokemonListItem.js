@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import PropTypes from "prop-types";
-import noImage96px from "./../public/noImage96px.png";
+import noImage96px from "./assets/noImage96px.png";
 
 export default function PokemonListItem({
   name,
