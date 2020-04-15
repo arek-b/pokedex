@@ -3,10 +3,10 @@ import { Link } from "@reach/router";
 import * as Accents from "./Accents";
 
 function Navbar() {
-  const [collapse, setCollapse] = useState("");
+  const [expand, setExpand] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light navbar-pokedex">
+    <nav className="navbar navbar-expand-sm navbar-light navbar-pokedex">
       <Link to="/" className="navbar-brand">
         <span className="brand-pokedex">{Accents.Pokedex}</span>
       </Link>
@@ -14,26 +14,30 @@ function Navbar() {
         className="navbar-toggler"
         type="button"
         aria-controls="navbarSupportedContent"
-        aria-expanded="false"
+        aria-expanded={expand.toString()}
         aria-label="Toggle navigation"
-        onClick={() => setCollapse(collapse == "" ? "show" : "")}
+        onClick={() => setExpand(!expand)}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
 
       <div
-        className={`collapse ${collapse} navbar-collapse`}
+        className={`collapse ${expand ? "show" : ""} navbar-collapse`}
         id="navbarSupportedContent"
       >
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to="/" className="nav-link">
+            <Link to="/" className="nav-link" onClick={() => setExpand(false)}>
               Home
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/results" className="nav-link">
-              All {Accents.Pokemon}
+            <Link
+              to="/results"
+              className="nav-link"
+              onClick={() => setExpand(false)}
+            >
+              {Accents.Pokemon} list
             </Link>
           </li>
         </ul>
