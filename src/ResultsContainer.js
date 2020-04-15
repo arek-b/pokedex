@@ -11,6 +11,7 @@ export default function ResultsContainer({ resultsPerPage }) {
   const [pageCount, setPageCount] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
+  const [mobileShowFilters, setMobileShowFilters] = useState(false);
   const [selectedTypes, setSelectedTypes] = useQueryParam(
     "pokemonType",
     ArrayParam
@@ -88,6 +89,8 @@ export default function ResultsContainer({ resultsPerPage }) {
       pokemonList={pokemonList}
       totalCount={totalCount}
       filters={{ types: [selectedTypes, setSelectedTypes] }}
+      mobileShowFilters={mobileShowFilters}
+      setMobileShowFilters={setMobileShowFilters}
     />
   );
 }

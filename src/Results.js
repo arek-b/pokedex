@@ -15,26 +15,60 @@ export default function Results({
   pokemonList,
   totalCount,
   filters,
+  mobileShowFilters,
+  setMobileShowFilters,
 }) {
   return (
     <div>
+      <div className="row d-md-none mb-3">
+        <div className="col-12">
+          <button
+            type="button"
+            className={`btn btn-block ${
+              mobileShowFilters ? "btn-secondary" : "btn-dark"
+            }`}
+            onClick={() => setMobileShowFilters(!mobileShowFilters)}
+          >
+            {mobileShowFilters ? "Back to results" : "Filters"}
+          </button>
+        </div>
+      </div>
       <div className="row">
-        <div className="d-none d-sm-block col-sm-3">
+        <div
+          className={`${
+            mobileShowFilters ? "col-12" : "d-none d-md-block"
+          } col-md-4 col-lg-3`}
+        >
           <Filters filters={filters} />
         </div>
-        <div className="col-12 col-sm-9">
+        <div
+          className={`${
+            mobileShowFilters ? "d-none d-md-block" : "col-12"
+          } col-md-8 col-lg-9`}
+        >
           <div className="row">
-            <div className="col-5 col-sm-7 col-md-8 col-lg-9 mt-2">
-              <h3>
-                {totalCount === 0 ? "No" : totalCount} {Accents.Pokemon} found!
+            <div className="col-4 col-sm-7 col-md-8 col-lg-9 mt-2">
+              <h4 className="d-none d-sm-block">
+                {totalCount === 0 ? "No" : totalCount}{" "}
+                <small className="text-muted">{Accents.Pokemon} found!</small>
+              </h4>
+              <h3 className="d-sm-none">
+                {totalCount === 0 ? "No" : totalCount}
               </h3>
             </div>
-            <div className="col-7 col-sm-5 col-md-4 col-lg-3">
-              <Pagination
-                currentPage={page}
-                pageCount={pageCount}
-                setPage={setPage}
-              />
+            <div className="col-8 col-sm-5 col-md-4 col-lg-3">
+              {totalCount === 0 ? null : (
+                <Pagination
+                  currentPage={page}
+                  pageCount={pageCount}
+                  setPage={setPage}
+                />
+              )}
+            </div>
+          </div>
+          <div className="row d-sm-none">
+            <div className="col-12">
+              <h5 className="text-muted">{Accents.Pokemon} found!</h5>
             </div>
           </div>
           <div className="row mt-3">
@@ -46,16 +80,18 @@ export default function Results({
               )}
             </div>
           </div>
-          <div className="row mt-3 mb-5">
-            <div className="col-5 col-sm-7 col-md-8 col-lg-9"></div>
-            <div className="col-7 col-sm-5 col-md-4 col-lg-3">
-              <Pagination
-                currentPage={page}
-                pageCount={pageCount}
-                setPage={setPage}
-              />
+          {totalCount === 0 ? null : (
+            <div className="row mt-3 mb-5">
+              <div className="col-4 col-sm-7 col-md-8 col-lg-9"></div>
+              <div className="col-8 col-sm-5 col-md-4 col-lg-3">
+                <Pagination
+                  currentPage={page}
+                  pageCount={pageCount}
+                  setPage={setPage}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -71,4 +107,6 @@ Results.propTypes = {
   pokemonList: PropTypes.array.isRequired,
   totalCount: PropTypes.number.isRequired,
   filters: PropTypes.object.isRequired,
+  mobileShowFilters: PropTypes.bool.isRequired,
+  setMobileShowFilters: PropTypes.func.isRequired,
 };
