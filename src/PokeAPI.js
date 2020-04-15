@@ -44,10 +44,11 @@ export default class PokeAPI {
   }
 
   static async _cachedFetch(url, options) {
-    const cached = PokeAPI._cache[url];
-    if (cached) {
+    const isCached = Object.prototype.hasOwnProperty.call(PokeAPI._cache, url);
+    if (isCached) {
+      const cachedValue = PokeAPI._cache[url];
       const cachedResponse = new Response(
-        new Blob([JSON.stringify(cached)], { type: "application/json" })
+        new Blob([JSON.stringify(cachedValue)], { type: "application/json" })
       );
       return Promise.resolve(cachedResponse);
     }
