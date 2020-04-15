@@ -10,7 +10,7 @@ export default class PokeAPI {
       { url }
     );
     try {
-      let response = await fetch(url);
+      let response = await PokeAPI._cachedFetch(url);
       let json = await response.json();
       return json;
     } catch (e) {
@@ -42,4 +42,31 @@ export default class PokeAPI {
     }
     return apiResults;
   }
+
+  static async _cachedFetch(url, options) {
+    const cached = PokeAPI._cache[url];
+    if (cached) {
+      const cachedResponse = new Response(
+        new Blob([JSON.stringify(cached)], { type: "application/json" })
+      );
+      return Promise.resolve(cachedResponse);
+    }
+
+    const response = await fetch(url, options);
+    if (response.status === 200) {
+      const contentType = response.headers.get("Content-Type");
+      if (contentType && contentType.match(/application\/json/i)) {
+        response
+          .clone()
+          .json()
+          .then((json) => {
+            PokeAPI._cache[url] = json;
+          });
+      }
+    }
+    return response;
+  }
 }
+
+// not using session storage or local storage due to 5 MB limit
+PokeAPI._cache = {};
