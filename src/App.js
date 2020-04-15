@@ -9,20 +9,26 @@ import ResultsContainer from "./ResultsContainer";
 import APIConnectionFailed from "./APIConnectionFailed";
 import NotFound from "./NotFound";
 import { QueryParamProvider } from "use-query-params";
+import Footer from "./Footer";
 
 const App = () => {
   return (
     <React.StrictMode>
-      <Navbar />
-      <div className="container mt-4">
-        <QueryParamProvider reachHistory={globalHistory}>
-          <Router>
-            <Home path="/" />
-            <ResultsContainer path="/results/" resultsPerPage={10} />
-            <APIConnectionFailed path="/api-connection-failed/" />
-            <NotFound default />
-          </Router>
-        </QueryParamProvider>
+      <div id="wrapper" className="d-flex flex-column">
+        <Navbar />
+        <main>
+          <div className="container mt-4">
+            <QueryParamProvider reachHistory={globalHistory}>
+              <Router>
+                <Home path="/" />
+                <ResultsContainer path="/results/" resultsPerPage={10} />
+                <APIConnectionFailed path="/api-connection-failed/" />
+                <NotFound default />
+              </Router>
+            </QueryParamProvider>
+          </div>
+        </main>
+        <Footer />
       </div>
     </React.StrictMode>
   );

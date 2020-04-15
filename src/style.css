@@ -16,6 +16,14 @@
   background-color: #c70021;
 }
 
+.btn-dark {
+  background-color: #17285e;
+}
+
+.btn-dark:hover {
+  background-color: #0e1c49;
+}
+
 html,
 #root {
   background-color: #fffbcd;
@@ -87,4 +95,24 @@ h4.fake {
 .sprite-container.fake {
   background-color: #eee;
   animation: fadeIn ease-in-out 1s;
+}
+
+.footer {
+  background-color: #17285e;
+  color: lightgray;
+  font-size: small;
+}
+
+#wrapper {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+.jumbotron {
+  background-color: #ffdf61;
+  color: black;
+  padding: 2rem;
 }
