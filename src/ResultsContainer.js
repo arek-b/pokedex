@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import PokeAPI from "./PokeAPI";
 import Results from "./Results";
@@ -17,7 +17,14 @@ export default function ResultsContainer({ resultsPerPage }) {
     ArrayParam
   );
 
+  // reset page number when one of the filters changes
+  const isFirstRun = useRef(true);
   useEffect(() => {
+    // skip first run to preserve page number from url
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
     setPage(1);
   }, [selectedTypes, setPage]);
 
