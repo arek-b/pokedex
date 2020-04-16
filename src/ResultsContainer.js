@@ -16,21 +16,17 @@ export default function ResultsContainer({ resultsPerPage }) {
     "pokemonType",
     ArrayParam
   );
+  const lastSelectedTypes = useRef(selectedTypes);
 
-  // reset page number when one of the filters changes
-  const isFirstRun = useRef(true);
   useEffect(() => {
-    // skip first run to preserve page number from url
-    if (isFirstRun.current) {
-      isFirstRun.current = false;
+    setIsLoading(true);
+    setPokemonList([]);
+
+    if (page !== 1 && selectedTypes != lastSelectedTypes.current) {
+      setPage(1);
       return;
     }
-    setPage(1);
-  }, [selectedTypes, setPage]);
-
-  useEffect(() => {
-    setPokemonList([]);
-    setIsLoading(true);
+    lastSelectedTypes.current = selectedTypes;
 
     if (selectedTypes && selectedTypes.length > 0) {
       const urls = selectedTypes.map(
@@ -85,7 +81,7 @@ export default function ResultsContainer({ resultsPerPage }) {
         } else navigate("/api-connection-failed/");
       });
     }
-  }, [page, resultsPerPage, selectedTypes]);
+  }, [page, resultsPerPage, selectedTypes, setPage]);
   return (
     <Results
       page={page || 1}
