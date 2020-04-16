@@ -22,7 +22,10 @@ export default function ResultsContainer({ resultsPerPage }) {
     setIsLoading(true);
     setPokemonList([]);
 
-    if (page !== 1 && selectedTypes != lastSelectedTypes.current) {
+    if (
+      (page !== 1 && selectedTypes != lastSelectedTypes.current) ||
+      page < 1
+    ) {
       setPage(1);
       return;
     }
@@ -62,9 +65,14 @@ export default function ResultsContainer({ resultsPerPage }) {
           resultsPerPage * (page - 1),
           resultsPerPage * page
         );
+        const newPageCount = Math.ceil(newTotalCount / resultsPerPage);
         setPokemonList(newPokemonList);
-        setPageCount(Math.ceil(newTotalCount / resultsPerPage));
+        setPageCount(newPageCount);
         setTotalCount(newTotalCount);
+        if (page > newPageCount) {
+          setPage(1);
+          return;
+        }
         setIsLoading(false);
       });
     } else {
@@ -74,9 +82,14 @@ export default function ResultsContainer({ resultsPerPage }) {
         resultsPerPage
       ).then((apiResult) => {
         if (apiResult) {
+          const newPageCount = Math.ceil(apiResult.count / resultsPerPage);
           setPokemonList(apiResult.results);
-          setPageCount(Math.ceil(apiResult.count / resultsPerPage));
+          setPageCount(newPageCount);
           setTotalCount(apiResult.count);
+          if (page > newPageCount) {
+            setPage(1);
+            return;
+          }
           setIsLoading(false);
         } else navigate("/api-connection-failed/");
       });
