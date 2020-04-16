@@ -47,7 +47,7 @@ export default function Results({
           } col-md-8 col-lg-9`}
         >
           <div className="row">
-            <div className="col-4 col-sm-7 col-md-8 col-lg-9 mt-2">
+            <div className="col-4 col-sm-6 col-lg-8 col-xl-9 mt-2">
               <h4 className="d-none d-sm-block">
                 {totalCount === 0 ? "No" : totalCount}{" "}
                 <small className="text-muted">{Accents.Pokemon} found!</small>
@@ -56,7 +56,7 @@ export default function Results({
                 {totalCount === 0 ? "No" : totalCount}
               </h3>
             </div>
-            <div className="col-8 col-sm-5 col-md-4 col-lg-3">
+            <div className="col-8 col-sm-6 col-lg-4 col-xl-3">
               {totalCount === 0 ? null : (
                 <Pagination
                   currentPage={page}
@@ -82,8 +82,8 @@ export default function Results({
           </div>
           {totalCount === 0 ? null : (
             <div className="row mt-3 mb-5">
-              <div className="col-4 col-sm-7 col-md-8 col-lg-9"></div>
-              <div className="col-8 col-sm-5 col-md-4 col-lg-3">
+              <div className="col-4 col-sm-6 col-lg-8 col-xl-9"></div>
+              <div className="col-8 col-sm-6 col-lg-4 col-xl-3">
                 <Pagination
                   currentPage={page}
                   pageCount={pageCount}

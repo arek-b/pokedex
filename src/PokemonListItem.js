@@ -11,8 +11,8 @@ export default function PokemonListItem({
   setSpriteLoaded,
 }) {
   let src = noImage96px;
-  if (info.sprites && info.sprites.front_default) {
-    src = info.sprites.front_default;
+  if (info.sprites) {
+    src = info.sprites.front_default || info.sprites.front_female || src;
   }
   return (
     <Link
