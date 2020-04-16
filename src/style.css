@@ -63,16 +63,39 @@ html,
   animation: fadeIn ease-in-out 0.3s;
 }
 
+.card-sprite > img {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated; /* prevents blur on high-dpi screens */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-sprite {
+  margin: 0 5px 5px 0;
+}
+
+.card-sprite > .card-body {
+  padding: 0 10px 10px 10px;
+}
+
+.card-sprite > .card-body > .card-text {
+  font-size: small;
+}
+
+.sprites-row {
+  margin-left: 0;
+  margin-right: 0;
+  align-items: center;
+  justify-content: center;
+}
+
 .sprite-container {
   width: 96px;
   height: 96px;
   outline: 2px solid #eee;
   margin-bottom: 8px;
   animation: fadeOutSpriteContainer ease-in-out 0.5s;
-}
-.sprite-container > img {
-  width: 96px;
-  height: 96px;
 }
 
 @keyframes fadeOutSpriteContainer {

@@ -10,6 +10,7 @@ import APIConnectionFailed from "./APIConnectionFailed";
 import NotFound from "./NotFound";
 import { QueryParamProvider } from "use-query-params";
 import Footer from "./Footer";
+import PokemonScreenContainer from "./PokemonScreenContainer";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
               <Router>
                 <Home path="/" />
                 <ResultsContainer path="/results/" resultsPerPage={10} />
+                <PokemonScreenContainer path="/pokemon/:name" />
                 <APIConnectionFailed path="/api-connection-failed/" />
                 <NotFound default />
               </Router>

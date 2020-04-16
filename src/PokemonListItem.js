@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import PropTypes from "prop-types";
 import noImage96px from "./assets/noImage96px.png";
+import PokemonBasicInfo from "./PokemonBasicInfo";
 
 export default function PokemonListItem({
   name,
@@ -35,17 +36,7 @@ export default function PokemonListItem({
           </div>
           <div className="pokemon-info">
             {Object.keys(info).length === 0 ? null : (
-              <p>
-                EXP gain: {info.base_experience}
-                <br />
-                Height: {info.height /*dm*/ * 10} cm
-                <br />
-                Weight: {info.weight /*hg*/ / 10} kg
-                <br />
-                <span className="text-capitalize">
-                  Species: {info.species.name}
-                </span>
-              </p>
+              <PokemonBasicInfo info={info} />
             )}
           </div>
         </div>
