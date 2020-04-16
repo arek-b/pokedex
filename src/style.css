@@ -145,6 +145,10 @@ h4.fake {
   font-size: small;
 }
 
+.footer a {
+  color: white;
+}
+
 #wrapper {
   min-height: 100vh;
 }
