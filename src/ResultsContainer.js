@@ -65,7 +65,7 @@ export default function ResultsContainer({ resultsPerPage }) {
           resultsPerPage * (page - 1),
           resultsPerPage * page
         );
-        const newPageCount = Math.ceil(newTotalCount / resultsPerPage);
+        const newPageCount = Math.ceil(newTotalCount / resultsPerPage) || 1;
         setPokemonList(newPokemonList);
         setPageCount(newPageCount);
         setTotalCount(newTotalCount);
